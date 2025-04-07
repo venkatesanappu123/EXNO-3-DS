@@ -1,4 +1,4 @@
-## EXNO-3-DS
+![image](https://github.com/user-attachments/assets/8f51729a-145b-46ee-83a5-58c274bd22c9)## EXNO-3-DS
 
 # AIM:
 To read the given data and perform Feature Encoding and Transformation process and save the data to a file.
@@ -96,6 +96,57 @@ CC=pd.concat([CC,new],axis=1)
 CC
 ```
 ![Screenshot 2025-04-07 113426](https://github.com/user-attachments/assets/e5306eaf-a5c6-499b-b52b-7c11bf67294d)
+```
+import pandas as pd
+from scipy import stats
+import numpy as np
+df=pd.read_csv("/content/Data_to_Transform.csv")
+df
+```
+![Screenshot 2025-04-07 113733](https://github.com/user-attachments/assets/2db43f84-e167-4927-a8aa-6ed5a05f97cc)
+```
+df.skew()
+```
+![Screenshot 2025-04-07 113808](https://github.com/user-attachments/assets/2f480543-01b8-4367-b649-f5e3d31bdc0e)
+
+```
+np.log(df["Highly Positive Skew"])
+```
+![Screenshot 2025-04-07 113907](https://github.com/user-attachments/assets/9da0fd7e-6898-4b51-bcc9-d34d947ace32)
+```
+np.reciprocal(df["Moderate Positive Skew"])
+```
+![image](https://github.com/user-attachments/assets/b14961bd-f6ff-4e1c-a65b-f360bf5798ac)
+```
+np.sqrt(df["Highly Positive Skew"])
+```
+![image](https://github.com/user-attachments/assets/61723f84-9a56-4bcc-b0db-9cc8363ed543)
+```
+np.square(df["Highly Positive Skew"])
+```
+![image](https://github.com/user-attachments/assets/2199b100-e05c-4c6f-91ac-0f7b234f37ca)
+```
+df["Highly Positive Skew_boxcox"], parameters=stats.boxcox(df["Highly Positive Skew"])
+df
+```
+![image](https://github.com/user-attachments/assets/a9e29fce-ca39-4c6c-afbc-b499a126516a)
+```
+df["Moderate Negative Skew_yeojohnson"],parameters=stats.yeojohnson(df["Moderate Negative Skew"])
+df
+```
+![image](https://github.com/user-attachments/assets/0fa61e48-7ce9-4adf-acf2-85b4d4c0cc36)
+```
+import seaborn as sns
+import statsmodels.api as sm
+import matplotlib.pyplot as plt
+sm.qqplot(df["Moderate Negative Skew"],line='45')
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/1b1f730e-7f64-4474-ba94-a8884a69302d)
+```
+sm.qqplot(np.reciprocal(df["Moderate Negative Skew_1"]),line='45')
+plt.show()
+```
 
 
 
