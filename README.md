@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/8f51729a-145b-46ee-83a5-58c274bd22c9)## EXNO-3-DS
+## EXNO-3-DS
 
 # AIM:
 To read the given data and perform Feature Encoding and Transformation process and save the data to a file.
@@ -147,13 +147,40 @@ plt.show()
 sm.qqplot(np.reciprocal(df["Moderate Negative Skew_1"]),line='45')
 plt.show()
 ```
-
-
-
-
-
-
-
+![image](https://github.com/user-attachments/assets/a39b5576-3fa6-4b98-b8f6-2c9cebcb7ee4)
+```
+from sklearn.preprocessing import QuantileTransformer
+qt=QuantileTransformer(output_distribution='normal',n_quantiles=891)
+df["Moderate Negative Skew"]=qt.fit_transform(df[["Moderate Negative Skew"]])
+sm.qqplot(df["Moderate Negative Skew"],line='45')
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/223d9096-f47d-4fcd-b1f8-fe176b758cd5)
+```
+df["Highly Negative Skew_1"]=qt.fit_transform(df[["Highly Negative Skew"]])
+sm.qqplot(df["Highly Negative Skew"],line='45')
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/4ca510a6-0cf7-4202-adce-fbd7c0f3713f)
+```
+sm.qqplot(df['Highly Negative Skew_1'],line='45')
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/26136a36-3758-437d-9daf-d3c1d150111d)
+```
+dt=pd.read_csv("/content/titanic_dataset.csv")
+from sklearn.preprocessing import QuantileTransformer
+qt=QuantileTransformer(output_distribution='normal',n_quantiles=891)
+dt["Age_1"]=qt.fit_transform(dt[["Age"]])
+sm.qqplot(dt['Age'],line='45')
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/02b35501-632c-4b86-abf3-48477688f58a)
+```
+sm.qqplot(dt['Age_1'],line='45')
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/c23b95ff-0b0e-426b-8eb2-360c222afd7c)
 # RESULT:
        
 Thus the given data, Feature Encoding, Transformation process and save the data to a file was performed successfully.
